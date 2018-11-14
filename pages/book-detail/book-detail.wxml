@@ -1,0 +1,70 @@
+<wxs src='./../../util/filter.wxs' module='util' />
+<view class='book-detail-container'>
+  <view class='header'>
+    <image src='{{bookdetail.image}}'></image>
+    <text class='title'>{{bookdetail.title}}</text>
+    <text class='author'>{{bookdetail.author}}</text>
+  </view>
+  <view class='sub-container'>
+    <text class='headerline' wx:if='{{comments.length > 0}}'>短评</text>
+    <text class='shadow' wx:if='{{comments.length === 0}}'>还没有短评</text>
+    <view class='comment-container'>
+      <block wx:for='{{util.limit(comments, 15)}}' wx:key='{{item.id}}'>
+        <tag-components tag-class='{{index % 2 === 0 ? "tag-class-1" : "tag-class-2"}}' text='{{item.content}}'>
+          <text class='num' decode='{{true}}' slot='after'>&nbsp;+{{item.nums}}</text>
+        </tag-components>
+      </block>
+    </view>
+  </view>
+  <view class='sub-container'>
+    <text class='headerline'>内容简介</text>
+    <!-- <text class='content'>{{bookdetail.summary}}</text> -->
+    <text decode='{{true}}' class='content'>{{util.format(bookdetail.summary)}}</text>
+  </view>
+  <view class='sub-container'>
+    <text class='headerline'>书本信息</text>
+    <view class='detail-container'>
+      <view class='vertacal description'>
+        <text>出版社</text>
+        <text>出版年</text>
+        <text>页数</text>
+        <text>定价</text>
+        <text>装帧</text>
+      </view>
+      <view class='vertacal'>
+        <text>{{bookdetail.publisher}}</text>
+        <text>{{bookdetail.pubdate}}</text>
+        <text>{{bookdetail.pages}}</text>
+        <text>{{bookdetail.price}}</text>
+        <text>{{bookdetail.binding}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if='{{!isShow}}' class='post-container'>
+  <view class='post-fake' bindtap='showInput'>
+    <text>输入短评</text>
+  </view>
+  <view class='like-container'>
+    <like-components bindswitchlike='switchlike' class='like' like='{{like_status}}' count='{{fav_nums}}' />
+  </view>
+</view>
+
+<view wx:if='{{isShow}}' class='posting-container'>
+  <view class='post-header'>
+    <text wx:if='{{comments.length > 0}}'>仅可点击标签+1</text>
+    <text wx:if='{{comments.length === 0}}'>暂无短评</text>
+    <text bindtap='hideInput' class='cancel'>取消</text>
+  </view>
+  <view class='comment-container'>
+    <block wx:for='{{util.limit(comments, 3)}}' wx:key='{{item.id}}'>
+      <tag-components bindonclicktap='onclicktap' tag-class='{{index % 2 === 0 ? "tag-class-1" : "tag-class-2"}}' text='{{item.content}}'>
+        <text class='num' decode='{{true}}' slot='after'>&nbsp;+{{item.nums}}</text>
+      </tag-components>
+    </block>
+  </view>
+  <input bindconfirm='onclicktap' class='post' placeholder='短评最多输入12个字'></input>
+</view>
+
+<mask-components wx:if='{{isShow}}'></mask-components>

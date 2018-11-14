@@ -1,0 +1,5 @@
+<view class='navi-container'>
+  <image bindtap='onLeft' class='icon' src='{{latest ? "./images/triangle.dis@left.png" : "./images/triangle@left.png"}}'></image>
+  <text class='title'>{{title}}</text>
+  <image bindtap='onRight' class='icon' src='{{first ? "./images/triangle.dis@right.png" : "./images/triangle@right.png"}}'></image>
+</view>

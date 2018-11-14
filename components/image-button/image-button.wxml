@@ -1,0 +1,3 @@
+<button class='container' plain='{{true}}' bindgetuserinfo='onGetUserInfo' open-type='{{opentype}}'>
+  <slot name='img'></slot>
+</button>

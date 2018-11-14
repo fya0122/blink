@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "tag-components": "./../../components/tag/tag",
+    "image-button-components": "./../../components/image-button/image-button",
+    "preview-components": "./../../components/preview/preview"
+  },
+  "backgroundColor": "#f5f5f5"
+}

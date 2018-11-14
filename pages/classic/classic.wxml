@@ -1,0 +1,15 @@
+<view class='container'>
+  <view class='header-container'>
+    <epsoide-components class='epsoide' index='{{classic.index}}' />
+    <view class='like-container'>
+      <like-components class='like' bindswitchlike='switchlike' like='{{like_status}}' count='{{fav_nums}}' />
+      <image-button-components opentype='share' class='share-btn'>
+        <image class='share' slot='img' src='./../../images/icon/share.png'></image>
+      </image-button-components>
+    </view>
+  </view>
+  <movie-components wx:if='{{classic.type === 100}}' img='{{classic.image}}' content='{{classic.content}}' />
+  <music-components wx:if='{{classic.type === 200}}' img='{{classic.image}}' content='{{classic.content}}' src='{{classic.url}}' />
+  <essay-components wx:if='{{classic.type === 300}}' img='{{classic.image}}' content='{{classic.content}}' />
+  <navi-components bindonleft='onleft' bindonright='onright' title='{{classic.title}}' first='{{first}}' latest='{{latest}}' class='navi' />
+</view>

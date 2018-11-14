@@ -1,0 +1,17 @@
+var format = function(text) { // 虽然wxs语法上面跟js很像，但是wxs 不等于 js，不能用js中的es6
+  if (!text) {
+    return
+  }
+  var reg = getRegExp('\\\\n', 'g')
+  return text.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+}
+var limit = function(array, length) {
+  if (!array) {
+    return
+  }
+  return array.slice(0, length)
+}
+module.exports = {
+  format: format,
+  limit: limit
+}

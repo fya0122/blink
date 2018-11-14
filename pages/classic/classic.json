@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "like-components": "./../../components/like/like",
+    "movie-components": "./../../components/classic/movie/movie",
+    "music-components": "./../../components/classic/music/music",
+    "essay-components": "./../../components/classic/essay/essay",
+    "epsoide-components": "./../../components/epsoide/epsoide",
+    "navi-components": "./../../components/navi/navi",
+    "image-button-components": "./../../components/image-button/image-button"
+  }
+}

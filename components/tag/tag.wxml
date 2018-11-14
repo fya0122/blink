@@ -1,0 +1,5 @@
+<view bindtap='onclicktap' data-content='{{text}}' class='tag-container tag-class'>
+  <text>{{text}}</text>
+  <!-- 因为tag组件不一定要有nums这个属性，所以可采用slot -->
+  <slot name='after'></slot>
+</view>

@@ -1,0 +1,54 @@
+<view class='container'>
+  <view class='header'>
+    <view class='search-container'>
+      <image class='icon' src='./images/search.png'></image>
+      <input bindconfirm='inputChange' placeholder-class='in-bar' placeholder='书籍名' class='bar' auto-focus='{{true}}' value='{{q}}'></input>
+      <image bindtap='deletetxt' class='cancel-img' src='./images/cancel.png'></image>
+    </view>
+    <view bindtap='searchhide' class='cancel'>取消</view>
+  </view>
+  <view wx:if='{{showResult === false}}'>
+    <view class='history'>
+      <view class='title'>
+        <view class='chunk'></view>
+        <text>历史搜索</text>
+      </view>
+      <view class='tags' wx:if='{{historywords.length > 0}}'>
+        <!-- 不管是小程序还是vue，key绝对不能以index，这个是特例 -->
+        <block wx:for='{{historywords}}' wx:key='{{index}}'>
+          <tag-components bindonclicktap='inputChange' text='{{item}}' />
+        </block>
+      </view>
+      <view class='tags' wx:if='{{historywords.length === 0}}'>
+        <!-- 不管是小程序还是vue，key绝对不能以index，这个是特例 -->
+        <tag-components text='暂无历史标签' />
+      </view>
+    </view>
+    <view class='history hot-search'>
+      <view class='title'>
+        <view class='chunk'></view>
+        <text>热门搜索</text>
+      </view>
+      <view class='tags' wx:if='{{hotwords.length > 0}}'>
+        <!-- 不管是小程序还是vue，key绝对不能以index，这个是特例 -->
+        <block wx:for='{{hotwords}}' wx:key='{{index}}'>
+          <tag-components bindonclicktap='inputChange' text='{{item}}' />
+        </block>
+      </view>
+      <view class='tags' wx:if='{{hotwords.length === 0}}'>
+        <tag-components text='暂无热门标签' />
+      </view>
+    </view>
+  </view>
+
+  <view wx:if='{{showResult === true}}' class='books-container'>
+    <block wx:for='{{dataAyyay}}' wx:key='{{item.id}}'>
+      <book-components book='{{item}}' class='book' />
+    </block>
+  </view>
+
+  <loading-components class='loading-center' wx:if='{{loadingCenter}}' />
+  <loading-components class='loading' wx:if='{{loading}}' />
+
+  <text wx:if='{{noResult}}' class='empty-tip'>没有搜索到书籍</text>
+</view>

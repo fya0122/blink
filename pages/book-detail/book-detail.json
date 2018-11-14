@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tag-components": "./../../components/tag/tag",
+    "like-components": "./../../components/like/like",
+    "mask-components": "./../../components/mask/mask"
+  }
+}

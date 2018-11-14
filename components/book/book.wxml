@@ -1,0 +1,10 @@
+<view bindtap='navigatetobookdetail' data-id='{{book.id}}' class='book-container'>
+  <image src='{{book.image}}'></image>
+  <view class='description'>
+    <text class='title'>{{book.title}}</text>
+    <text class='author'>{{book.author}}</text>
+    <view class='foot'>
+      <text class='footer'>{{book.fav_nums}}人喜欢</text>
+    </view>
+  </view>
+</view>
